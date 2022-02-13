@@ -1,32 +1,23 @@
+import { useColorModeValue } from "@chakra-ui/react";
 import React, { createContext, useContext, useState } from "react";
 
 const darkBackgroundColor = "#171717";
 const darkFontColor = "#EDEDED";
 
-// const lightBackgroundColor = "#EDEDED";
-// const lightFontColor = "#171717";
+const lightBackgroundColor = "#EDEDED";
+const lightFontColor = "#171717";
 
-const ThemeContext = createContext({
-  backgroundColor: darkBackgroundColor,
-  fontColor: darkFontColor,
-});
+const ThemeContext = createContext();
 
 const ThemeContextProvider = ({ children }) => {
-  const [backgroundColor, setBackgroundColor] = useState(darkBackgroundColor);
-  const [fontColor, setFontColor] = useState(darkFontColor);
-
-  const toggleTheme = () => {
-    if (backgroundColor === darkBackgroundColor) {
-      setBackgroundColor(lightBackgroundColor);
-      setFontColor(lightFontColor);
-    } else {
-      setBackgroundColor(darkBackgroundColor);
-      setFontColor(darkFontColor);
-    }
-  };
+  const backgroundColor = useColorModeValue(
+    lightBackgroundColor,
+    darkBackgroundColor
+  );
+  const fontColor = useColorModeValue(lightFontColor, darkFontColor);
 
   return (
-    <ThemeContext.Provider value={{ backgroundColor, fontColor, toggleTheme }}>
+    <ThemeContext.Provider value={{ backgroundColor, fontColor }}>
       {children}
     </ThemeContext.Provider>
   );

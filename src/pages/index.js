@@ -1,4 +1,5 @@
 import { Box, Button, Flex } from "@chakra-ui/react"
+import Landing from "../components/Landing"
 import Menu from "../components/Menu"
 import { useThemeContext } from "../context/theme"
 
@@ -7,6 +8,7 @@ export default function Home() {
   return (
     <Box bg={backgroundColor} color={fontColor} minH="100vh">
       <Menu />
-    </Box>
+      <Landing />
+    </Box >
   )
 }
