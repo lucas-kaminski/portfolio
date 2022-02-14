@@ -1,46 +1,74 @@
-import { Button, Flex, Spacer } from '@chakra-ui/react'
-import React from 'react'
-import { RiGithubLine, RiLinkedinBoxLine } from 'react-icons/ri'
-import { Link } from 'react-scroll'
+import {
+  Box,
+  Button,
+  Flex,
+  IconButton,
+  Spacer,
+  Text,
+  useColorMode,
+} from "@chakra-ui/react";
+import { RiMoonLine, RiSunLine } from "react-icons/ri";
+import React from "react";
 
-const buttons = [
-  { label: 'life', id: 'life' },
-  { label: 'work', id: 'work' },
-  { label: 'study', id: 'study' },
-  { label: 'blog', id: 'blog' },
-]
-
-const socials = [
-  {
-    aria: 'Github',
-    icon: <RiGithubLine />,
-  },
-  {
-    aria: 'LinkedIn',
-    icon: <RiLinkedinBoxLine />,
-  },
-]
-
-function Menu() {
+const MenuButton = ({ title, ...props }) => {
   return (
-    <Flex w="100%" h="10vh" px="3vw" align="center" top={0} position="fixed" zIndex={999}>
-      <Link to="frontpage">Logo</Link>
-      <Spacer />
-      {buttons.map((item, index) => {
-        console.log(item.id)
-        return (
-          <Button variant="unstyled" key={index} ml="1vw">
-            <Link to={item.id}>{item.label}</Link>
-          </Button>
-        )
-      })}
-      {socials.map((item, index) => (
-        <Flex fontSize="1.5em" ml="1vw">
-          {item.icon}
-        </Flex>
-      ))}
-    </Flex>
-  )
-}
+    <Button
+      variant="ghost"
+      fontWeight={"light"}
+      onClick={() => console.log("teste")}
+      {...props}
+    >
+      {title}
+    </Button>
+  );
+};
 
-export default Menu
+const MenuIcon = ({ icon, ...props }) => {
+  return (
+    <IconButton
+      variant="ghost"
+      icon={icon}
+      onClick={() => console.log("teste")}
+      {...props}
+    />
+  );
+};
+
+const Logo = () => {
+  return (
+    <Box
+      fontWeight={"semibold"}
+      fontSize={"lg"}
+      letterSpacing="8px"
+      onClick={() => console.log("teste")}
+    >
+      Lucas Kaminski
+    </Box>
+  );
+};
+
+export default function Menu() {
+  const { colorMode, toggleColorMode } = useColorMode();
+  return (
+    <Flex
+      position="sticky"
+      direction="row"
+      align="center"
+      minH="10vh"
+      px="4"
+      pt="2"
+    >
+      <Logo />
+      <Spacer />
+      <MenuButton title="Sobre mim" />
+      <MenuButton title="Trabalhos" />
+      <MenuButton title="Contato" />
+      <MenuIcon
+        icon={colorMode === "light" ? <RiMoonLine /> : <RiSunLine />}
+        onClick={() => {
+          toggleColorMode();
+        }}
+      />
+    </Flex>
+  );
+}
