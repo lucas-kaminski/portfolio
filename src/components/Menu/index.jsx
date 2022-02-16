@@ -60,9 +60,9 @@ export default function Menu() {
     >
       <Logo />
       <Spacer />
-      <MenuButton title="Sobre mim" />
-      <MenuButton title="Trabalhos" />
-      <MenuButton title="Contato" />
+      <MenuButton title="sobre mim" />
+      <MenuButton title="trabalhos" />
+      <MenuButton title="contato" />
       <MenuIcon
         icon={colorMode === "light" ? <RiMoonLine /> : <RiSunLine />}
         onClick={() => {

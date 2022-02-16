@@ -5,7 +5,7 @@ import Home from "./Home";
 
 export default function Landing() {
   return (
-    <Flex minH="90vh" maxH="90vh" direction={"column"}>
+    <Flex direction={"column"}>
       <Home />
       <About />
     </Flex>

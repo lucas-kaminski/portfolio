@@ -4,10 +4,10 @@ import { RiArrowDownLine } from "react-icons/ri";
 
 export default function Home() {
   return (
-    <Flex bg="blue" height={"90vh"} align="end" p="5vh" direction={"row"}>
-      <Text fontSize="2xl">
+    <Flex minH="90vh" maxH="90vh" align="end" p="5vh" direction={"row"}>
+      <Flex direction={"row"} fontSize="2xl" align={"center"}>
         saiba mais <RiArrowDownLine />
-      </Text>
+      </Flex>
       <Text textAlign="end" ml="auto" fontSize="8xl">
         Desenvolvedor <br /> Full Stack
       </Text>
