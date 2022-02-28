@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { RiMoonLine, RiSunLine } from "react-icons/ri";
 import React from "react";
+import { useThemeContext } from "../../context/theme";
 
 const MenuButton = ({ title, ...props }) => {
   return (
@@ -49,14 +50,17 @@ const Logo = () => {
 
 export default function Menu() {
   const { colorMode, toggleColorMode } = useColorMode();
+  const { backgroundColor } = useThemeContext();
   return (
     <Flex
-      position="sticky"
+      position="fixed"
       direction="row"
       align="center"
       minH="10vh"
+      w="100%"
       px="4"
       pt="2"
+      bg={backgroundColor}
     >
       <Logo />
       <Spacer />
